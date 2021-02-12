@@ -68,13 +68,14 @@ public class RecordEventsReadableSpan: ReadableSpan {
     /// Number of events recorded.
     public private(set) var totalRecordedEvents = 0
     /// The status of the span.
-    public var status: Status = Status.unset {
-        didSet {
-            if hasEnded {
-                status = oldValue
-            }
-        }
-    }
+    public var status: Status = Status.unset 
+//     {
+//         didSet {
+//             if hasEnded {
+//                 status = oldValue
+//             }
+//         }
+//     }
 
     /// The scope where the span is associated
     public var scope: Scope?
@@ -279,6 +280,7 @@ public class RecordEventsReadableSpan: ReadableSpan {
             }
         }
         endTime = time
+        self.status = .ok
         spanProcessor.onEnd(span: self)
         scope?.close()
     }
