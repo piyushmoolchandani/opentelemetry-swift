@@ -51,8 +51,8 @@ final class Adapter {
         let spanHex = span.spanId.hexString
         let spanId = Int64(spanHex, radix: 16) ?? 0
         let operationName = span.name
-        let startTime = Int64(span.startTime.timeIntervalSince1970.toMilliseconds)
-        let duration = Int64(span.endTime.timeIntervalSince(span.startTime).toMilliseconds)
+        let startTime = Int64(span.startTime.timeIntervalSince1970.toMicroseconds)
+        let duration = Int64(span.endTime.timeIntervalSince(span.startTime).toMicroseconds)
 
         var parentSpanId: Int64 = 0
 
